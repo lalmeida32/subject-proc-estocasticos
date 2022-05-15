@@ -1,0 +1,103 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\title{Lista 2}
+\author{SME0121 - Processos Estocásticos}
+\date{2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Exercício}
+Observação: há um erro na primeira linha da matriz. Assuma que $P_{00}=0.5$ para que a soma da primeira linha seja 1.
+\begin{enumerate}[label=(\alph*)]
+
+    \item Usando que $P(A\cap B)=P(A|B)P(B)$, as propriedades da cadeia de Markov e a matriz de probabilidade, temos que
+    
+    $$P(X_0=0\cap X_1=1\cap X_2=2) =$$
+    $$P(X_2=2|X_1=1\cap X_0=0)P(X_1=1|X_0=0)P(X_0=0) =$$
+    $$P(X_2=2|X_1=1)P(X_1=1|X_0=0)P(X_0=0) =$$
+    $$P_{12}P_{01}P(X_0=0) = 0.4\times0.2 \times 0.3 = 0.024$$
+    
+    \item Semelhante ao item (a).
+    
+    $$P(X_2=1\cap X_3=1|X_1=0) =$$
+    $$\frac{P(X_1=0\cap X_2=1\cap X_3=1)}{P(X_1=0)} =$$
+    $$\frac{P(X_3=1|X_2=1)P(X_2=1|X_1=0)P(X_1=0)}{P(X_1=0)} =$$
+    $$P_{11}P_{01} = 0.6\times 0.2 = 0.12$$
+    
+    \newpage
+    
+    \item Semelhante aos items (a) e (b).
+    
+    $$P(X_1=1\cap X_2=1|X_0=0) =$$
+    $$\frac{P(X_0=0\cap X_1=1\cap X_2=1)}{P(X_0=0)} =$$
+    $$\frac{P(X_2=1|X_1=1)P(X_1=1|X_0=0)P(X_0=0)}{P(X_0=0)} =$$
+    $$P_{11}P_{01} = 0.6\times 0.2 = 0.12$$
+
+    \item Semelhante aos itens anteriores.
+    
+    $$P(X_0=1\cap X_1=0\cap X_2=2|X_0=1) =$$
+    $$\frac{P(X_0=1\cap X_1=0\cap X_2=2)}{P(X_0=1)} =$$
+    $$\frac{P(X_2=2|X_1=0)P(X_1=0|X_0=1)P(X_0=1)}{P(X_0=1)} =$$
+    $$P_{02}P_{10} = 0.3\times 0 = 0$$
+
+\end{enumerate}
+
+\section{Exercício}
+
+\begin{enumerate}[label=(\alph*)]
+
+    \item Temos que $P_{00}=\alpha$ e que $P_{10}=\beta$. Fora isso, sabemos que cada linha da matriz de transição soma 1 e que o espaço de estados possui apenas dois elementos, o que nos dá a seguinte matriz:
+    $$\begin{bmatrix}
+        \alpha & 1-\alpha\\
+        \beta & 1-\beta
+    \end{bmatrix}$$
+    Para calcular a distribuição de equilíbrio, utilizamos as equações $\pi=\pi P$ e $\sum_i{\pi_i}=1$.
+    $$\begin{cases}
+      \pi_0=\pi_0\alpha + \pi_1\beta\\
+      \pi_0+\pi_1=1
+    \end{cases}$$
+    $$\begin{cases}
+      \pi_0(1-\alpha)=\pi_1\beta\\
+      \pi_1=1-\pi_0
+    \end{cases}$$
+    $$\pi_0(1-\alpha)=\beta-\beta\pi_0$$
+    $$\pi_0=\frac{\beta}{\beta+1-\alpha}$$
+    $$\pi_1=\frac{1-\alpha}{\beta+1-\alpha}$$
+    
+    \newpage
+    
+    \item O enunciado está mal formulado. Vamos assumir que queremos calcular $P(X_{n+4}=0|X_n=0)$.
+    
+    Assumindo que
+    
+    $$\mathbb{P}=\begin{bmatrix}
+        0.7 & 0.3\\
+        0.4 & 0.6
+    \end{bmatrix}$$
+    
+    Temos que encontrar o termo $P_{00}$ de $\mathbb{P}^{4}$.
+    
+    $$\mathbb{P}^2=\begin{bmatrix}
+        0.61 & 0.39\\
+        0.52 & 0.48
+    \end{bmatrix}$$
+    
+    $$\mathbb{P}^4=\begin{bmatrix}
+        0.5749 & P_{01}\\
+        P_{10} & P_{11}
+    \end{bmatrix}$$
+    
+    Portanto, a probabilidade é de $57.49\%$.
+    
+    
+    
+\end{enumerate}
+
+
+\end{document}
