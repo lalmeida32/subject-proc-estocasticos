@@ -3,6 +3,7 @@
 \usepackage{enumitem}
 \usepackage{amsmath}
 \usepackage{amsfonts}
+\usepackage{indentfirst}
 
 \title{Lista 2}
 \author{SME0121 - Processos Estocásticos}
@@ -57,7 +58,7 @@ Observação: há um erro na primeira linha da matriz. Assuma que $P_{00}=0.5$ p
         \alpha & 1-\alpha\\
         \beta & 1-\beta
     \end{bmatrix}$$
-    Para calcular a distribuição de equilíbrio, utilizamos as equações $\pi=\pi P$ e $\sum_i{\pi_i}=1$.
+    Para calcular a distribuição de equilíbrio, utilizamos as equações $\pi=\pi \mathbb{P}$ e $\sum_i{\pi_i}=1$.
     $$\begin{cases}
       \pi_0=\pi_0\alpha + \pi_1\beta\\
       \pi_0+\pi_1=1
@@ -99,5 +100,138 @@ Observação: há um erro na primeira linha da matriz. Assuma que $P_{00}=0.5$ p
     
 \end{enumerate}
 
+\section{Exercício}
+
+\begin{enumerate}
+    \item[] Temos que $Z_n=(X_{n-1},X_n)$. Logo, $Z_{n+1}=(X_n,X_{n+1})$. Isso significa que $Z_n$ e $Z_{n+1}$ compartilham de um estado $X_n$. Logo, temos que
+    
+    $$Q_{(a,b)(c,d)}=0,$$
+    
+    sempre que $b\neq c$.
+    
+    Definindo os estados $0\rightarrow (0,0)$, $1\rightarrow (0,1)$, $2\rightarrow (1,0)$ e $3\rightarrow (1,1)$, temos a seguinte matriz de probabilidades para $Z_n$:
+    
+    $$\mathbb{Q}=\begin{bmatrix}
+        Q_{00} & Q_{01} & 0 & 0\\
+        0 & 0 & Q_{12} & Q_{13}\\
+        Q_{20} & Q_{21} & 0 & 0\\
+        0 & 0 & Q_{32} & Q_{33}\\
+    \end{bmatrix}$$
+    
+    Para $b=c$, temos que
+    
+    $$Q_{(a,b)(c,d)}=P(X_{n+1}=d\cap X_n=c|X_n=b\cap X_{n-1}=a) =$$
+    $$P(X_{n+1}=d\cap X_n=c|X_n=b) =$$
+    $$\frac{P(X_{n+1}=d\cap X_n=b)}{P(X_n=b)} =$$
+    $$P(X_{n+1}=d|X_n=b) = P_{bd}.$$
+    
+    \newpage
+    
+    Dessa forma, temos por fim a matriz de probabilidade da variável aleatória $Z_n$:
+    
+    $$\mathbb{Q}=\begin{bmatrix}
+        \alpha & 1-\alpha & 0 & 0\\
+        0 & 0 & 1-\beta & \beta\\
+        \alpha & 1-\alpha & 0 & 0\\
+        0 & 0 & 1-\beta & \beta\\
+    \end{bmatrix}$$
+    
+\end{enumerate}
+
+\section{Exercício}
+
+Observação: A frase ``a probabilidade do jogador A atingir estado i antes dele atingir o estado 0'' está incorreta nesse contexto. A frase correta deveria ser ``a probabilidade da fortuna do jogador A''.
+
+Observação 2: Há um erro na lista em que o exercício atual possui duas questões (a). A segunda será encarada como (b).
+
+Observação 3: Ficou ambígua a frase ``jogador A ganhe um dólar do jogador B antes que o jogador B ganhe 99 dólares do jogador A''. Isso foi questionado ao professor durante a aula e a interpretação correta segundo ele é: ``fortuna do jogador A antes da fortuna do jogador B''. Uma interpretação equivalente deve ser assumida para na questão (b).
+
+\begin{enumerate}[label=(\alph*)]
+    \item Resultado vem direto da equação fornecida.
+    
+    $$\alpha_{99} = \frac{(\frac{0.6}{0.4})^{99}-1}{(\frac{0.6}{0.4})^{100}-1} = \frac{2\cdot 3^{99}-2^{100}}{3\cdot 3^{99}-2^{100}}\approx \frac{2}{3}$$
+    
+    \item Novamente resultado vem direto da equação.
+    
+    $$1-\alpha_{98} = 1-\frac{(\frac{0.6}{0.4})^{98}-1}{(\frac{0.6}{0.4})^{100}-1} = \frac{5\cdot 3^{98}}{9\cdot 3^{98}-2^{100}}$$
+    
+    $$\frac{5\cdot 3^{98}}{9\cdot 3^{98}-2^{100}} > \frac{1}{2} \Leftrightarrow 3^{98} > -2^{100}$$
+    
+    Como a última inequação é claramente verdadeira, então a probabilidade da ruína de A nessa situação é maior que $50\%$. 
+
+\end{enumerate}
+
+\newpage
+
+\section{Exercício}
+
+\begin{enumerate}[label=(\alph*)]
+    \item Para esta questão se usa as mesmas ferramentas que no exercício 1 desta mesma lista.
+    
+    $$P(X_0=0\cap X_1=0\cap X_2=0|X_0=0) =$$
+    $$\frac{P(X_0=0\cap X_1=0\cap X_2=0)}{P(X_0=0)} =$$
+    $$\frac{P(X_2=0|X_1=0)P(X_1=0|X_0=0)P(X_0=0)}{P(X_0=0)} =$$
+    $${P_{00}}^2 = (1-\alpha)^2$$
+    
+    \item Aqui, deve-se considerar a matriz de probabilidade.
+    
+    $$\mathbb{P}=\begin{bmatrix}
+        1-\alpha & \alpha\\
+        \alpha & 1-\alpha
+    \end{bmatrix}$$
+    
+    $$\mathbb{P}^2=\begin{bmatrix}
+        2\alpha^2-2\alpha+1 & 2\alpha(1-\alpha)\\
+        2\alpha(1-\alpha) & 2\alpha^2-2\alpha+1
+    \end{bmatrix}$$
+    
+    A probabilidade $P(X_2=0|X_0=0)$ é igual a $2\alpha^2-2\alpha+1$.
+    
+    \item Para calcular a distribuição de equilíbrio, utilizamos as equações $\pi=\pi\mathbb{P}$ e $\sum_i{\pi_i}=1$, como feito anteriormente no exercício 2.
+    
+    $$\begin{cases}
+      \pi_0=\pi_0(1-\alpha) + \pi_1\alpha\\
+      \pi_0+\pi_1=1
+    \end{cases}$$
+    $$\begin{cases}
+      \pi_0=\pi_0 - \pi_0\alpha + \pi_1\alpha\\
+      \pi_1=1-\pi_0
+    \end{cases}$$
+    $$\pi_0=\pi_1=\frac{1}{2}$$
+    
+    \newpage
+    
+    \item Por fim, usa-se as multiplicações da matriz de probabilidade, de modo semelhante à questão (b) deste exercício.
+    
+    $$\mathbb{P}=\begin{bmatrix}
+        0.9 & 0.1\\
+        0.1 & 0.9
+    \end{bmatrix}$$
+    
+    $$\mathbb{P}^2=\begin{bmatrix}
+        0.82 & 0.18\\
+        0.18 & 0.82
+    \end{bmatrix}$$
+    
+    $$\mathbb{P}^4=\begin{bmatrix}
+        0.7048 & 0.2952\\
+        0.2952 & 0.7048
+    \end{bmatrix}$$
+    
+    $$\mathbb{P}^5=\begin{bmatrix}
+        P_{00} & P_{01}\\
+        0.33616 & P_{11}
+    \end{bmatrix}$$
+    
+    Ou seja, $P(X_5=0|X_0=1) = 33.62\%$
+
+\end{enumerate}
+
+\section{Exercício}
+
+\begin{enumerate}[label=(\alph*)]
+    \item 
+
+\end{enumerate}
 
 \end{document}
