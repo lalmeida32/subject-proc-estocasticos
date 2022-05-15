@@ -14,4 +14,5 @@ Para compilar um arquivo PDF a partir de um TEX, tenha uma implementação de La
 ## Contribuindo
 
 Se você quer apenas apontar algum erro ou dar uma sugestão, crie uma issue.
-Se você deseja contribuir diretamente com alguma modificação no código, crie uma pull request.
+
+Se você deseja contribuir diretamente com alguma modificação no código, crie uma pull request. Se conveniente, crie uma branch antes.
