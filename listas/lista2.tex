@@ -230,7 +230,98 @@ Observação 3: Ficou ambígua a frase ``jogador A ganhe um dólar do jogador B 
 \section{Exercício}
 
 \begin{enumerate}[label=(\alph*)]
-    \item 
+    \item Como cada linha da matriz soma 1,
+    $$\begin{cases}
+      x=0.3\\
+      y=0.3\\
+      z=0.4
+    \end{cases}$$
+    
+    Gerando a matriz
+    
+    $$\mathbb{P}=\begin{bmatrix}
+        0.6 & 0.3 & 0.1\\
+        0.3 & 0.4 & 0.3\\
+        0.4 & 0.1 & 0.5\\
+    \end{bmatrix}$$
+    
+    A distribuição de equilíbrio é calculada por $\pi=\pi\mathbb{P}$ e $\sum_i{\pi_i}=1$.
+    
+    $$\begin{cases}
+      \pi_0 = 0.6\pi_0+0.3\pi_1+0.4\pi_2\\
+      \pi_1 = 0.3\pi_0+0.4\pi_1+0.1\pi_2\\
+      1 = \pi_0 + \pi_1 + \pi_2
+    \end{cases}$$
+    
+    Usando qualquer método de resolução de sistemas, se obtém o seguinte resultado:
+    
+    $$\pi=(\frac{27}{58}, \frac{16}{58}, \frac{15}{58})$$
+
+    \newpage
+
+    \item Usando as técnicas do exercício 1 desta lista, temos
+    
+    $$P(X_0=0\cap X_1=1\cap X_2=2) = $$
+    $$P(X_2=2|X_1=1)P(X_1=1|X_0=0)P(X_0=0) = $$
+    $$P_{12}P_{01}p_0 = 0.3\cdot 0.3\cdot 0.3 = 0.027$$
+    
+    e
+
+    $$P(X_2=1\cap X_3=1|X_1=0) = $$
+    $$\frac{P(X_1=0\cap X_2=1\cap X_3=1)}{P(X_1=0)} = $$
+    $$\frac{P(X_3=1|X_2=1)P(X_2=1|X_1=0)P(X_1=0)}{P(X_1=0)} = $$
+    $$P_{11}P_{01} = 0.4\cdot 0.3 = 0.12$$
+    
+    \item O enunciado nos manda determinar $P(X_0=1\cap X_1=0\cap X_2=2|X_0=1)$. Podemos proceder exatamente como na questão (d) do exercício 1 desta lista.
+    
+    $$P(X_0=1\cap X_1=0\cap X_2=2|X_0=1) =$$
+    $$\frac{P(X_0=1\cap X_1=0\cap X_2=2)}{P(X_0=1)} =$$
+    $$P_{02}P_{10} = 0.1\cdot 0.3 = 0.03$$
+
+\end{enumerate}
+
+\section{Exercício}
+
+\begin{enumerate}[label=(\alph*)]
+    \item Novamente, calcular a distribuição de equilíbrio.
+    
+    $$\begin{cases}
+      \pi_0 = 0.8\pi_0+0.1\pi_1\\
+      \pi_1 = 0.1\pi_0+0.7\pi_1+0.1\pi_2\\
+      1 = \pi_0 + \pi_1 + \pi_2
+    \end{cases}$$
+    
+    $$\begin{cases}
+      \pi_0 = 0.125\\
+      \pi_1 = 0.25\\
+      \pi_2 = 0.625
+    \end{cases}$$
+    
+    \newpage
+    
+    \item O que o enunciado pede para calcular é $\mathbb{P}^2$.
+    
+    $$\mathbb{P}^2=\begin{bmatrix}
+        0.65 & 0.16 & 0.19\\
+        0.15 & 0.52 & 0.33\\
+        0.01 & 0.16 & 0.83
+    \end{bmatrix}$$
+
+\end{enumerate}
+
+\section{Exercício}
+
+\begin{enumerate}[label=(\alph*)]
+    \item Como nenhum dos estados se comunicam, há 3 classes: $\{0\}$, $\{1\}$ e $\{2\}$.
+    \item Não, cadeias irredutíveis por definição possuem apenas 1 classe.
+    \item Uma das condições para se encontrar a distribuição de equilíbrio de uma cadeia é a sua irredutibilidade. Não é o caso, pois a cadeia não é irredutível.
+
+\end{enumerate}
+
+\section{Exercício}
+
+\begin{enumerate}
+    \item[] A cadeia possui 2 estados: $\{0,1\}$ e $\{2\}$, pois o estado 2 não se comunica com nenhum dos outros estados. Dessa forma, a cadeia não é irredutível, e não satisfaz uma das condições para encontrar a distribuição de equilíbrio.
 
 \end{enumerate}
 
