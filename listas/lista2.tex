@@ -4,6 +4,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{indentfirst}
+\usepackage{tikz}
 
 \title{Lista 2}
 \author{SME0121 - Processos Estocásticos}
@@ -322,6 +323,77 @@ Observação 3: Ficou ambígua a frase ``jogador A ganhe um dólar do jogador B 
 
 \begin{enumerate}
     \item[] A cadeia possui 2 estados: $\{0,1\}$ e $\{2\}$, pois o estado 2 não se comunica com nenhum dos outros estados. Dessa forma, a cadeia não é irredutível, e não satisfaz uma das condições para encontrar a distribuição de equilíbrio.
+
+\end{enumerate}
+
+\section{Exercício}
+
+Observação: Esse exercício não deixa claro no enunciado se, em um fim de semana, se conta o número de câmeras para determinar o estado e depois se realiza a política, ou se primeiro se realiza a política e depois se determina o estado. Vamos considerar que primeiro se determina o estado e depois se realiza a política, pois caso contrário, o estado 0 seria inatingível.
+
+Observação 2: Provavelmente a linha 1 e 2 estão trocadas. Vamos considerar a seguinte matriz de probabilidades:
+
+$$\mathbb{P}=\begin{bmatrix}
+    0.080 & 0.184 & 0.368 & 0.368\\
+    0.632 & 0.368 & 0 & 0\\
+    0.264 & 0.368 & 0.368 & 0\\
+    0.080 & 0.184 & 0.368 & 0.368
+\end{bmatrix}$$
+
+Isso porque, dado o enunciado e nossa interpretação comentada na observação anterior, faz sentido que não haja chance da cadeia ir do estado 1 para o estado 2 em um passo. 
+
+\newpage
+
+\begin{tikzpicture}
+    \begin{scope}[every node/.style={circle,thick,draw}]
+        \node (0) at (0,0) {0};
+        \node (1) at (3,0) {1};
+        \node (2) at (6,0) {2};
+        \node (3) at (9,0) {3};
+    \end{scope}
+    
+    \begin{scope}[every node/.style={fill=white,circle},
+                  every edge/.style={draw=black,very thick}]
+        \path [->] (0) edge node {$0.184$} (1);
+        \path [->] (0) edge[bend right=30] node {$0.368$} (2);
+        \path [->] (0) edge[bend right=40] node {$0.368$} (3);
+        
+        \path [->] (1) edge[bend right=40] node {$0.632$} (0);
+        \path [->] (2) edge[bend right=40] node {$0.368$} (1);
+        \path [->] (2) edge[bend right=60] node {$0.264$} (0);
+        \path [->] (3) edge[bend right=70] node {$0.080$} (0);
+        \path [->] (3) edge[bend right=60] node {$0.184$} (1);
+        \path [->] (3) edge[bend right=40] node {$0.368$} (2);
+        
+        \draw [->] (0) edge[loop left] node {$0.080$} (0);
+        \draw [->] (1) edge[loop right] node {$0.368$} (1);
+        \draw [->] (2) edge[loop right] node {$0.368$} (2);
+        \draw [->] (3) edge[loop right] node {$0.368$} (3);
+    \end{scope}
+\end{tikzpicture}
+
+\begin{enumerate}[label=(\alph*)]
+    
+    \item Grafo desenhado acima.
+
+    \item Sim, pois todo estado se comunica com outro estado, o que faz com que a cadeia tenha apenas uma classe, e portanto seja irredutível.
+    
+    \item Cálculo da distribuição de equilíbrio.
+    
+    $$\begin{cases}
+      \pi_1 = 0.184\pi_0+0.368\pi_1+0.368\pi_2+0.184\pi_3\\
+      \pi_2 = 0.368\pi_0+0.368\pi_2+0.368\pi_3\\
+      \pi_3 = 0.368\pi_0+0.368\pi_3\\
+      1 = \pi_0+\pi_1+\pi_2+\pi_3
+    \end{cases}$$
+    $$\begin{cases}
+      \pi_0 \approx 0.2857\\
+      \pi_1 \approx 0.2849\\
+      \pi_2 \approx 0.2632\\
+      \pi_3 \approx 0.1664
+    \end{cases}$$
+    
+    
+    \item O tempo de recorrência é calculado por $\mu_i=\frac{1}{\pi_i}$. Temos então que $\mu_3 \approx 6.01$ semanas.
 
 \end{enumerate}
 
